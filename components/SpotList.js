@@ -1,9 +1,10 @@
 import SpotCard from "./SpotCard";
+import { mockSpots } from "../helpers/mockSpots.js";
 
-function SpotList({ spots }) {
+export default function SpotList() {
   return (
     <ul>
-      {spots.map((spot, index) => (
+      {mockSpots.map((spot, index) => (
         <SpotCard key={index} name={spot.name} address={spot.address} />
       ))}
     </ul>
