@@ -3,7 +3,7 @@ import styled from "styled-components";
 export default function SpotCard({ name, address }) {
   return (
     <Card>
-      <Content>
+      <li>
         <TextContainer>
           <Name>{name}</Name>
           <Address>{address}</Address>
@@ -14,23 +14,20 @@ export default function SpotCard({ name, address }) {
             alt="Spot Image"
           />
         </ImageContainer>
-      </Content>
+      </li>
     </Card>
   );
 }
 
-const Card = styled.div`
+const Card = styled.article`
   background-color: #e0e0e0;
+  display: flex;
   border: 1px solid #dddddd;
   border-radius: 5px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   padding: 10px;
   margin-bottom: 10px;
   width: 300px;
-`;
-
-const Content = styled.div`
-  display: flex;
 `;
 
 const ImageContainer = styled.div`
