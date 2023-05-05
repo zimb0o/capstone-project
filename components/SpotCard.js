@@ -3,18 +3,16 @@ import styled from "styled-components";
 export default function SpotCard({ name, address }) {
   return (
     <Card>
-      <li>
-        <TextContainer>
-          <Name>{name}</Name>
-          <Address>{address}</Address>
-        </TextContainer>
-        <ImageContainer>
-          <Image
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Hauskatze_langhaar.jpg/600px-Hauskatze_langhaar.jpg"
-            alt="Spot Image"
-          />
-        </ImageContainer>
-      </li>
+      <TextContainer>
+        <Name>{name}</Name>
+        <Address>{address}</Address>
+      </TextContainer>
+      <ImageContainer>
+        <Image
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Hauskatze_langhaar.jpg/600px-Hauskatze_langhaar.jpg"
+          alt="Spot Image"
+        />
+      </ImageContainer>
     </Card>
   );
 }
