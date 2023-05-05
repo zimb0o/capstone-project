@@ -6,7 +6,8 @@ export default function App() {
   return (
     <div>
       <h1>TheCaliSpots</h1>
-      <SpotCard name={"Alex"} adress={"asdfsgsd"} />
+      <SpotCard />
+      <SpotList />
     </div>
   );
 }
