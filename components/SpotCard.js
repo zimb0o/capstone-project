@@ -1,19 +1,10 @@
 import styled from "styled-components";
 import React from "react";
-import SpotDetails from "../SpotDetails.js";
-import { FaAngleDown } from "react-icons/fa";
-im;
+import SpotDetails from "../components/SpotDetails.js";
 
 export default function SpotCard({ name, address }) {
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  const toggleExpand = () => {
-    setIsExpanded(!isExpanded);
-  };
-
   return (
     <>
-
       <TextContainer>
         <Name>{name}</Name>
         <Address>{address}</Address>
@@ -23,11 +14,8 @@ export default function SpotCard({ name, address }) {
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Hauskatze_langhaar.jpg/600px-Hauskatze_langhaar.jpg"
           alt="Spot Image"
         />
-        <Button isExpanded={isExpanded} onClick={toggleExpand}>
-          <FaAngleDown size={20} />
-        </Button>
       </ImageContainer>
-      <SpotDetailsContainer isExpanded={isExpanded}>
+      <SpotDetailsContainer>
         <SpotDetails />
       </SpotDetailsContainer>
     </>
@@ -69,26 +57,8 @@ const Button = styled.button`
   justify-content: center;
   align-items: center;
   position: relative;
-
- /* &:after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 0;
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid white;
-    transform: translateY(-50%);
-    transition: transform 0.3s ease;
-    ${(props) =>
-      props.isExpanded ? "transform: translateY(-50%) rotate(180deg);" : ""}
-  }
-`; */
+`;
 
 const SpotDetailsContainer = styled.div`
-  height: ${(props) => (props.isExpanded ? "400px" : "auto")};
-  overflow: ${(props) => (props.isExpanded ? "scroll" : "hidden")};
-  transition: height 0.3s ease;
+  margin: 0;
 `;
