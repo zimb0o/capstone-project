@@ -1,12 +1,29 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 
 export default function SpotDetails() {
   return (
     <SpotDetailsSection>
-      <Button>type="button"</Button>
+      <DetailsLabel>Details:</DetailsLabel>
+      <DetailsList>
+        <li>Tasks: Indoor</li>
+        <li>Equipment: Medium</li>
+        <li>Age: 2 years</li>
+      </DetailsList>
     </SpotDetailsSection>
   );
 }
 
-const SpotDetailsSection = styled.section``;
-const Button = styled.button``;
+const SpotDetailsSection = styled.div`
+  margin-top: 10px;
+`;
+
+const DetailsLabel = styled.h3`
+  margin: 0;
+`;
+
+const DetailsList = styled.ul`
+  margin: 0;
+  padding: 0;
+  list-style: none;
+`;
