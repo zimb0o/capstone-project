@@ -11,7 +11,11 @@ export default function SpotCard({ name, address }) {
   };
 
   return (
+<<<<<<< HEAD
     <>
+=======
+    <Card>
+>>>>>>> main
       <TextContainer>
         <Name>{name}</Name>
         <Address>{address}</Address>
@@ -21,6 +25,7 @@ export default function SpotCard({ name, address }) {
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Hauskatze_langhaar.jpg/600px-Hauskatze_langhaar.jpg"
           alt="Spot Image"
         />
+<<<<<<< HEAD
         <Button isExpanded={isExpanded} onClick={toggleExpand}>
           <FaAngleDown size={20} />
         </Button>
@@ -29,6 +34,10 @@ export default function SpotCard({ name, address }) {
         <SpotDetails />
       </SpotDetailsContainer>
     </>
+=======
+      </ImageContainer>
+    </Card>
+>>>>>>> main
   );
 }
 
