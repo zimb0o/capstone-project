@@ -12,7 +12,7 @@ export default function SpotDetails({
       <Name>{name}</Name>
       <Address>{address}</Address>
       <Tasks>
-        <Title>Tasks:</Title>
+        <Title>Übungen:</Title>
         {tasks.map((task, index) => (
           <Checkbox key={index}>
             <input type="checkbox" id={`task-${index}`} />
@@ -21,7 +21,7 @@ export default function SpotDetails({
         ))}
       </Tasks>
       <Equipment>
-        <Title>Equipment:</Title>
+        <Title>Trainingsgeräte:</Title>
         {equipment.map((item, index) => (
           <Checkbox key={index}>
             <input type="checkbox" id={`equipment-${index}`} />
