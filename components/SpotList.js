@@ -1,5 +1,5 @@
 import SpotCard from "./SpotCard";
-import { mockSpots } from "../helpers/mockSpots.js";
+import { mockSpots } from "../../helpers/mockSpots.js";
 
 export default function SpotList() {
   return (
