@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import React from "react";
 
 export default function SpotCard({ name, address }) {
   return (
@@ -17,15 +18,16 @@ export default function SpotCard({ name, address }) {
   );
 }
 
-const Card = styled.article`
+const Card = styled.section`
   background-color: #e0e0e0;
-  display: flex;
   border: 1px solid #dddddd;
   border-radius: 5px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   padding: 10px;
   margin-bottom: 10px;
   width: 300px;
+  display: flex;
+  flex-direction: column;
 `;
 
 const ImageContainer = styled.div`
