@@ -1,9 +1,8 @@
-import SpotList from "../components/SpotList.js";
-
+import SpotForm from "../components/SpotForm.js";
 export default function Home() {
   return (
     <div>
-      <SpotList />
+      <SpotForm />
     </div>
   );
 }
