@@ -1,9 +1,16 @@
+import React, { useState } from "react";
 import styled from "styled-components";
-import React from "react";
+import SpotDetails from "../components/SpotDetails.js";
 
 export default function SpotCard({ name, address }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const handleExpandClick = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
-    <Card>
+    <Card isExpanded={isExpanded}>
       <TextContainer>
         <Name>{name}</Name>
         <Address>{address}</Address>
@@ -14,6 +21,10 @@ export default function SpotCard({ name, address }) {
           alt="Spot Image"
         />
       </ImageContainer>
+      <Button onClick={handleExpandClick}>
+        {isExpanded ? "schließen" : "weitere Details"}
+      </Button>
+      {isExpanded && <SpotDetails />}
     </Card>
   );
 }
@@ -28,6 +39,13 @@ const Card = styled.section`
   width: 300px;
   display: flex;
   flex-direction: column;
+
+  ${({ isExpanded }) =>
+    isExpanded &&
+    `
+      height: 500px;
+      transition: height 0.3s ease-in-out;
+    `}
 `;
 
 const ImageContainer = styled.div`
@@ -48,8 +66,7 @@ const TextContainer = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: space-between;
 `;
 
 const Name = styled.h2`
@@ -58,4 +75,18 @@ const Name = styled.h2`
 
 const Address = styled.p`
   margin: 0;
+`;
+
+const Button = styled.button`
+  border: none;
+  border-radius: 5px;
+  background-color: #c2c2c2;
+  color: #fff;
+  padding: 5px 10px;
+  font-size: 1rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #a0a0a0;
+  }
 `;
