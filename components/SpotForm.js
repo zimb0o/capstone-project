@@ -95,6 +95,8 @@ const FormGroup = styled.div`
 
 const FormTasks = styled.div`
   border: 1px solid;
+  height: 50%;
+  width: 50%;
 `;
 
 const FormCheckbox = styled.div`
