@@ -5,14 +5,24 @@ export default function Home() {
   const [formData, setFormData] = useState({
     Spotname: "",
     Address: "",
-    Übungen: [],
-    Trainingsgeräte: [],
+    Tasks: [""],
   });
 
-  const onChangeHandler = (event) => {
+  const onChangeHandler = (event, index) => {
     const name = event.target.name;
     const value = event.target.value;
-    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+    setFormData((prevFormData) => {
+      const newFormData = { ...prevFormData };
+      newFormData.Tasks[index] = value;
+      return newFormData;
+    });
+  };
+
+  const onAddHandler = () => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      Tasks: [...prevFormData.Tasks, ""],
+    }));
   };
 
   const onSubmitHandler = (event) => {
@@ -22,67 +32,47 @@ export default function Home() {
 
   return (
     <div>
-      <form onSubmit={onSubmitHandler}>
+      <Form onSubmit={onSubmitHandler}>
         <FormGroup>
-          <FormLabel htmlFor="SpotName" className="form-label">
-            Spot Name:
-          </FormLabel>
-          <input
-            className="form-control"
-            type="text"
-            name="Spotname"
-            onChange={onChangeHandler}
-          />
+          <FormLabel htmlFor="SpotName">Spot Name:</FormLabel>
+          <input type="text" name="Spotname" onChange={onChangeHandler} />
         </FormGroup>
         <FormGroup>
-          <FormLabel htmlFor="Address" className="form-label">
-            Address:
-          </FormLabel>
-          <input
-            className="form-control"
-            type="text"
-            name="Address"
-            onChange={onChangeHandler}
-          />
+          <FormLabel htmlFor="Address">Address:</FormLabel>
+          <input type="text" name="Address" onChange={onChangeHandler} />
         </FormGroup>
-        <FormTasks>
-          <FormLabel htmlFor="Übungen" className="form-label">
-            Übungen:
-          </FormLabel>
-          <FormCheckbox>
+        {formData.Tasks.map((tasks, index) => (
+          <FormGroup key={index}>
+            <FormLabel htmlFor={`Tasks${index}]`}>Übung {index + 1}:</FormLabel>
             <input
-              type="checkbox"
-              name="Übungen"
-              value="push up"
-              onChange={onChangeHandler}
+              type="text"
+              name={`Tasks[${index}]`}
+              value={formData.Tasks[index]}
+              onChange={(event) => onChangeHandler(event, index)}
             />
-            <label htmlFor="push up">Push up</label>
-          </FormCheckbox>
-        </FormTasks>
-        <FormTasks>
-          <FormLabel htmlFor="Trainingsgeräte" className="form-label">
-            Trainingsgeräte:
-          </FormLabel>
-          <FormCheckbox>
-            <input
-              type="checkbox"
-              name="Trainingsgeräte"
-              value="pull up bar"
-              onChange={onChangeHandler}
-            />
-            <label htmlFor="pull up bar">Pull up bar</label>
-          </FormCheckbox>
-        </FormTasks>
+          </FormGroup>
+        ))}
         <FormGroup>
-          <Button className="btn" type="submit">
-            Submit
-          </Button>{" "}
+          <Button type="button" onClick={onAddHandler}>
+            Add
+          </Button>
         </FormGroup>
-      </form>
+        <FormGroup>
+          <Button type="submit">Submit</Button>{" "}
+        </FormGroup>
+      </Form>
     </div>
   );
 }
 
+const Form = styled.form`
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid;
+  border: radius 2px solid;
+  display: flex;
+  flex-direction: column;
+`;
 const FormLabel = styled.div`
   margin-bottom: 0.5rem;
   display: inline-block;
@@ -92,24 +82,9 @@ const FormLabel = styled.div`
 const FormGroup = styled.div`
   margin-bottom: 1rem;
 `;
-
-const FormTasks = styled.div`
-  border: 1px solid;
-  height: 50%;
-  width: 50%;
+const FormTask = styled.div`
+  margin-bottom: 1rem;
 `;
-
-const FormCheckbox = styled.div`
-  display: flex;
-  align-items: center;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-
-  input[type="checkbox"] {
-    margin-right: 0.5rem;
-  }
-`;
-
 const Button = styled.button`
   color: #fff;
   background-color: #0d6efd;
