@@ -7,11 +7,11 @@ import { mockSpots } from "../helpers/mockSpots.js";
 export default function Home() {
   const [spots, setSpots] = useState(mockSpots);
   return (
-    <div>
+    <>
       <Header />
       <Spots spots={spots} setSpots={setSpots} />
 
       <Footer />
-    </div>
+    </>
   );
 }

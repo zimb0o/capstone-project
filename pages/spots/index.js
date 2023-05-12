@@ -2,7 +2,6 @@ import styled from "styled-components";
 import SpotCard from "../../components/SpotCard.js";
 
 export default function Spots({ spots, setSpots }) {
-  console.log(spots);
   function toggleBookmark(id) {
     const newSpotArray = spots.map((spot) => {
       if (spot.id === id) {
@@ -18,21 +17,17 @@ export default function Spots({ spots, setSpots }) {
   }
 
   return (
-    <>
-      <StyledSpotsSection>
-        <>
-          {spots?.map((spot) => {
-            return (
-              <SpotCard
-                spot={spot}
-                key={spot.name}
-                toggleBookmark={toggleBookmark}
-              />
-            );
-          })}
-        </>
-      </StyledSpotsSection>
-    </>
+    <StyledSpotsSection>
+      {spots?.map((spot) => {
+        return (
+          <SpotCard
+            spot={spot}
+            key={spot.name}
+            toggleBookmark={toggleBookmark}
+          />
+        );
+      })}
+    </StyledSpotsSection>
   );
 }
 

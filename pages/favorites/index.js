@@ -17,25 +17,23 @@ export default function FavoriteSpots({ spots, setSpots }) {
   }
 
   return (
-    <>
-      <StyledBookmarkSection>
-        <ul>
-          {spots?.map((spot) => {
-            if (spot.isBookmark === true) {
-              return (
-                <SpotCard
-                  spot={spot}
-                  key={spot.name}
-                  toggleBookmark={toggleBookmark}
-                />
-              );
-            } else {
-              return null;
-            }
-          })}
-        </ul>
-      </StyledBookmarkSection>
-    </>
+    <StyledBookmarkSection>
+      <ul>
+        {spots?.map((spot) => {
+          if (spot.isBookmark === true) {
+            return (
+              <SpotCard
+                spot={spot}
+                key={spot.name}
+                toggleBookmark={toggleBookmark}
+              />
+            );
+          } else {
+            return null;
+          }
+        })}
+      </ul>
+    </StyledBookmarkSection>
   );
 }
 
