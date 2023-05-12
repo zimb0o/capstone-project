@@ -11,7 +11,7 @@ export const mockSpots = [
     ],
     equipment: ["Pull-up bar", "Parallel bars"],
     imgURL: "../../assets/images/CaliMusterBild.jpeg",
-    isBookmark: true,
+    isBookmark: false,
   },
   {
     id: 2,

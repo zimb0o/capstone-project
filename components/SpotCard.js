@@ -12,7 +12,7 @@ export default function SpotCard({ spot, toggleBookmark }) {
   return (
     <Card isExpanded={isExpanded}>
       <BookmarkButton
-        isBookmarked={true}
+        isBookmarked={false}
         onClick={() => {
           toggleBookmark(spot?.id);
         }}
@@ -123,7 +123,9 @@ const Button = styled.button`
 `;
 
 const BookmarkButton = styled.button`
-  border: 1rem;
+  margin: 0px;
+  border: 1px solid;
   border-radius: 5px;
-  right: -10px;
+  display: flex;
+  flex-direction: row-reverse;
 `;

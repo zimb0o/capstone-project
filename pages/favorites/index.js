@@ -4,7 +4,7 @@ import SpotCard from "../../components/SpotCard.js";
 export default function FavoriteSpots({ spots, setSpots }) {
   function toggleBookmark(id) {
     const newSpotArray = spots?.map((spot) => {
-      if (spot?.id === id) {
+      if (spot.id === id) {
         return {
           ...spot,
           isBookmark: !spot.Bookmark,
