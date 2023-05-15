@@ -34,9 +34,3 @@ export default function Spots({ spots, setSpots }) {
 const StyledSpotsSection = styled.section`
   margin: 80px 0 30px 0;
 `;
-
-const PlaceholderText = styled.p`
-  padding: 50px;
-  text-align: center;
-  color: var(--primary-color);
-`;
