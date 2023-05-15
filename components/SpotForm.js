@@ -4,8 +4,9 @@ import styled from "styled-components";
 export default function Home() {
   const [formData, setFormData] = useState({
     Spotname: "",
-    Address: "",
+    Address: [""],
     Tasks: [""],
+    Equipment: [""],
   });
 
   const onChangeHandler = (event, index) => {
@@ -13,15 +14,34 @@ export default function Home() {
     const value = event.target.value;
     setFormData((prevFormData) => {
       const newFormData = { ...prevFormData };
-      newFormData.Tasks[index] = value;
+      newFormData = value;
       return newFormData;
     });
   };
-
-  const onAddHandler = () => {
+  const onDeleteTaskHandler = (index) => {
+    setFormData((prevFormData) => {
+      const newFormData = { ...prevFormData };
+      newFormData.Tasks.splice(index, 1);
+      return newFormData;
+    });
+  };
+  const onDeleteEquipmentHandler = (index) => {
+    setFormData((prevFormData) => {
+      const newFormData = { ...prevFormData };
+      newFormData.Equipment.splice(index, 1);
+      return newFormData;
+    });
+  };
+  const onAddTaskHandler = () => {
     setFormData((prevFormData) => ({
       ...prevFormData,
       Tasks: [...prevFormData.Tasks, ""],
+    }));
+  };
+  const onAddEquipmentHandler = () => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      Equipment: [...prevFormData.Equipment, ""],
     }));
   };
 
@@ -35,26 +55,61 @@ export default function Home() {
       <Form onSubmit={onSubmitHandler}>
         <FormGroup>
           <FormLabel htmlFor="SpotName">Spot Name:</FormLabel>
-          <input type="text" name="Spotname" onChange={onChangeHandler} />
+          <input
+            type="text"
+            name="Spotname"
+            value={formData.Spotname}
+            onChange={onChangeHandler}
+          />
         </FormGroup>
         <FormGroup>
           <FormLabel htmlFor="Address">Address:</FormLabel>
-          <input type="text" name="Address" onChange={onChangeHandler} />
+          <input
+            type="text"
+            name="Address"
+            value={formData.Address}
+            onChange={(event) => onChangeHandler(event)}
+          />
         </FormGroup>
         {formData.Tasks.map((tasks, index) => (
           <FormGroup key={index}>
-            <FormLabel htmlFor={`Tasks${index}]`}>Übung {index + 1}:</FormLabel>
+            <FormLabel htmlFor={`Tasks${index}]`}>Tasks {index + 1}:</FormLabel>
             <input
               type="text"
               name={`Tasks[${index}]`}
               value={formData.Tasks[index]}
               onChange={(event) => onChangeHandler(event, index)}
             />
+            <Button type="button" onClick={() => onDeleteTaskHandler(index)}>
+              Delete
+            </Button>
+          </FormGroup>
+        ))}
+        {formData.Equipment.map((equipment, index) => (
+          <FormGroup key={index}>
+            <FormLabel htmlFor={`Equipment${index}]`}>
+              Equipment {index + 1}:
+            </FormLabel>
+            <input
+              type="text"
+              name={`Equipment[${index}]`}
+              value={formData.Equipment[index]}
+              onChange={(event) => onChangeHandler(event, index)}
+            />
+            <Button
+              type="button"
+              onClick={() => onDeleteEquipmentHandler(index)}
+            >
+              Delete
+            </Button>
           </FormGroup>
         ))}
         <FormGroup>
-          <Button type="button" onClick={onAddHandler}>
-            Add
+          <Button type="button" onClick={onAddTaskHandler}>
+            + Task
+          </Button>
+          <Button type="button" onClick={onAddEquipmentHandler}>
+            + Equipment
           </Button>
         </FormGroup>
         <FormGroup>
