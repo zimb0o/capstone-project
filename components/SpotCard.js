@@ -28,10 +28,7 @@ export default function SpotCard({ spot, toggleBookmark }) {
       </TextContainer>
 
       <ImageContainer>
-        <Image
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Hauskatze_langhaar.jpg/600px-Hauskatze_langhaar.jpg"
-          alt="Spot Image"
-        />
+        <Image src="../assets/images/Trainingsbild.png" alt="Spot Image" />
       </ImageContainer>
       <Button onClick={handleExpandClick}>
         {isExpanded ? "close" : "more Details"}
@@ -110,6 +107,6 @@ const BookmarkButton = styled.button`
   margin: 0px;
   border: 1px solid;
   border-radius: 5px;
-  position: absolute;
+  position: relative;
   right: -10px;
 `;
