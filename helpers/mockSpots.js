@@ -32,6 +32,7 @@ export const mockSpots = [
     isBookmark: false,
   },
   {
+    id: 4,
     name: "Park Reeseberg",
     address: "Reeseberg 28, 21079 Hamburg",
     task: ["Squats", "Lunges", "Box jumps", "Plyometric push-ups"],

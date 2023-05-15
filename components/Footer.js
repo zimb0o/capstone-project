@@ -12,7 +12,7 @@ export default function Footer() {
 
   return (
     <StyledNavigation>
-      <NavLink href={`/spots`}>
+      <NavLink href={`/Spots`}>
         <StyledNavItem>
           {pathname === "/spots" ? <SpotActiveIcon /> : <SpotIcon />}
           <NavIconText>Spots</NavIconText>
@@ -26,7 +26,7 @@ export default function Footer() {
         </StyledNavItem>
       </NavLink>
 
-      <NavLink href={`/favorites`}>
+      <NavLink href={`/Favorites`}>
         <StyledNavItem>
           {pathname === "/favorites" ? (
             <FavouriteActiveIcon />

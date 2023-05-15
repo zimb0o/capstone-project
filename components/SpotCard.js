@@ -28,7 +28,10 @@ export default function SpotCard({ spot, toggleBookmark }) {
       </TextContainer>
 
       <ImageContainer>
-        <Image src="../assets/images/Trainingsbild.png" alt="Spot Image" />
+        <Image
+          src="https://cdn.pullup-dip.com/media/image/f6/2a/00/back-lever-skill.jpg"
+          alt="Spot Image"
+        />
       </ImageContainer>
       <Button onClick={handleExpandClick}>
         {isExpanded ? "close" : "more Details"}

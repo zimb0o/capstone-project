@@ -4,13 +4,13 @@ import SpotCard from "../../components/SpotCard.js";
 export default function FavoriteSpots({ spots, toggleBookmark }) {
   return (
     <StyledBookmarkSection>
-      <ul>
+      <SpotCard>
         {spots?.map((spot) => {
           if (spot.isBookmark === true) {
             return (
               <SpotCard
                 spot={spot}
-                key={spot.name}
+                key={spot.id}
                 toggleBookmark={toggleBookmark}
               />
             );
@@ -18,11 +18,12 @@ export default function FavoriteSpots({ spots, toggleBookmark }) {
             return null;
           }
         })}
-      </ul>
+      </SpotCard>
     </StyledBookmarkSection>
   );
 }
 
 const StyledBookmarkSection = styled.section`
   margin: 80px 0 30px 0;
+  padding: 10px;
 `;

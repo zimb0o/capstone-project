@@ -1,6 +1,6 @@
 import { useState } from "react";
 import GlobalStyle from "../styles";
-import FavoriteSpots from "../pages/favorites/index.js";
+
 import { mockSpots } from "../helpers/mockSpots.js";
 export default function App({ Component, pageProps }) {
   const [spots, setSpots] = useState(mockSpots);
@@ -22,8 +22,8 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyle />
-      <FavoriteSpots spots={spots} toggleBookmark={toggleBookmark} />
-      <Component {...pageProps} />
+
+      <Component {...pageProps} spots={spots} toggleBookmark={toggleBookmark} />
     </>
   );
 }
