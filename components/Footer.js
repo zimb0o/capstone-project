@@ -26,7 +26,7 @@ export default function Footer() {
         </StyledNavItem>
       </NavLink>
 
-      <NavLink href={`/Favorites`}>
+      <NavLink href={`/favorites`}>
         <StyledNavItem>
           {pathname === "/favorites" ? (
             <FavouriteActiveIcon />
