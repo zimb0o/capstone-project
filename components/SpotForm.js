@@ -1,22 +1,20 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-export default function Home() {
+export default function SpotForm() {
   const [formData, setFormData] = useState({
     Spotname: "",
-    Address: [""],
+    Address: "",
     Tasks: [""],
     Equipment: [""],
   });
 
-  const onChangeHandler = (event, index) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setFormData((prevFormData) => {
-      const newFormData = { ...prevFormData };
-      newFormData = value;
-      return newFormData;
-    });
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
   };
   const onDeleteTaskHandler = (index) => {
     setFormData((prevFormData) => {
@@ -28,7 +26,7 @@ export default function Home() {
   const onDeleteEquipmentHandler = (index) => {
     setFormData((prevFormData) => {
       const newFormData = { ...prevFormData };
-      newFormData.Equipment.splice(index, 1);
+      newFormData.Equipment.splice(index, 0.5);
       return newFormData;
     });
   };
@@ -47,7 +45,9 @@ export default function Home() {
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    console.log(formData);
+    const formData = event.target.value(index);
+    const data = Object.fromEntries(formData);
+    console.log(data);
   };
 
   return (
@@ -59,7 +59,7 @@ export default function Home() {
             type="text"
             name="Spotname"
             value={formData.Spotname}
-            onChange={onChangeHandler}
+            onChange={(event) => handleChange(event)}
           />
         </FormGroup>
         <FormGroup>
@@ -68,25 +68,25 @@ export default function Home() {
             type="text"
             name="Address"
             value={formData.Address}
-            onChange={(event) => onChangeHandler(event)}
+            onChange={(event) => handleChange(event)}
           />
         </FormGroup>
-        {formData.Tasks.map((tasks, index) => (
-          <FormGroup key={index}>
-            <FormLabel htmlFor={`Tasks${index}]`}>Tasks {index + 1}:</FormLabel>
+        {formData.Tasks.map((index) => (
+          <FormSelect key={index}>
+            <FormLabel htmlFor={`Tasks${index}]`}>Tasks {index}:</FormLabel>
             <input
               type="text"
               name={`Tasks[${index}]`}
               value={formData.Tasks[index]}
-              onChange={(event) => onChangeHandler(event, index)}
+              onChange={(event) => handleChange(event, index)}
             />
             <Button type="button" onClick={() => onDeleteTaskHandler(index)}>
               Delete
             </Button>
-          </FormGroup>
+          </FormSelect>
         ))}
-        {formData.Equipment.map((equipment, index) => (
-          <FormGroup key={index}>
+        {formData.Equipment.map((index) => (
+          <FormSelect key={index}>
             <FormLabel htmlFor={`Equipment${index}]`}>
               Equipment {index + 1}:
             </FormLabel>
@@ -94,15 +94,12 @@ export default function Home() {
               type="text"
               name={`Equipment[${index}]`}
               value={formData.Equipment[index]}
-              onChange={(event) => onChangeHandler(event, index)}
+              onChange={(event) => handleChange(event, index)}
             />
-            <Button
-              type="button"
-              onClick={() => onDeleteEquipmentHandler(index)}
-            >
+            <Button type="button" onClick={() => onDeleteEquipmentHandler()}>
               Delete
             </Button>
-          </FormGroup>
+          </FormSelect>
         ))}
         <FormGroup>
           <Button type="button" onClick={onAddTaskHandler}>
@@ -137,8 +134,10 @@ const FormLabel = styled.div`
 const FormGroup = styled.div`
   margin-bottom: 1rem;
 `;
-const FormTask = styled.div`
+const FormSelect = styled.div`
   margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
 `;
 const Button = styled.button`
   color: #fff;
