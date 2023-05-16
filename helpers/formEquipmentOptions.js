@@ -1,4 +1,4 @@
-const formEquipmentOptions = [
+export const formEquipmentOptions = [
   "Pull-up bars",
   "Parallel bars",
   "Push-up bars",
