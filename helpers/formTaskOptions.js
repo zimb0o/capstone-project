@@ -1,4 +1,4 @@
-const formTaskOptions = [
+export const formTaskOptions = [
   "Pull-ups",
   "Dips",
   "Push-ups",
@@ -9,8 +9,6 @@ const formTaskOptions = [
   "Ring dips",
   "Rope climbing",
   "Bouldering",
-  "Box jumps",
-  "Pull-ups",
   "Tuck planche",
   "Swings",
   "Medicine ball passes",
