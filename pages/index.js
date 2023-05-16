@@ -1,8 +1,8 @@
-import SpotForm from "../components/SpotForm.js";
+import SpotCard from "../components/SpotCard.js";
 export default function Home() {
   return (
     <div>
-      <SpotForm />
+      <SpotCard />
     </div>
   );
 }

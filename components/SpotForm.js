@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { formTaskOptions } from "../helpers/formTaskOptions";
 import { formEquipmentOptions } from "../helpers/formEquipmentOptions";
@@ -9,7 +10,7 @@ export default function SpotForm() {
     Tasks: [],
     Equipment: [],
   });
-
+  const history = useHistory();
   const handleOptionToggle = (option, field) => {
     setFormData((prevFormData) => {
       const selectedOptions = prevFormData[field];
@@ -42,8 +43,11 @@ export default function SpotForm() {
   const onSubmitHandler = (event) => {
     event.preventDefault();
     console.log(formData);
+    history.push({
+      pathname: "/spots",
+      state: { formData },
+    });
   };
-
   return (
     <FormSection>
       <Form onSubmit={onSubmitHandler}>
@@ -127,6 +131,8 @@ const FormInput = styled.input`
 
 const FormGroup = styled.div`
   margin-bottom: 1 rem;
+  border: 0.5px solid;
+  border-radius: 0.5px;
 `;
 
 const Button = styled.button`
