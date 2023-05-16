@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-
+import { formTaskOptions } from "../helpers/formTaskOptions.js";
 export default function SpotForm() {
   const [formData, setFormData] = useState({
     Spotname: "",
@@ -10,52 +10,28 @@ export default function SpotForm() {
   });
 
   const handleChange = (event) => {
-    const { name, value } = event.target;
+    const { name, tasks, value } = event.target;
+
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: value,
     }));
   };
-  const onDeleteTaskHandler = (index) => {
-    setFormData((prevFormData) => {
-      const newFormData = { ...prevFormData };
-      newFormData.Tasks.splice(index, 1);
-      return newFormData;
-    });
-  };
-  const onDeleteEquipmentHandler = (index) => {
-    setFormData((prevFormData) => {
-      const newFormData = { ...prevFormData };
-      newFormData.Equipment.splice(index, 0.5);
-      return newFormData;
-    });
-  };
-  const onAddTaskHandler = () => {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      Tasks: [...prevFormData.Tasks, ""],
-    }));
-  };
-  const onAddEquipmentHandler = () => {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      Equipment: [...prevFormData.Equipment, ""],
-    }));
-  };
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    const formData = event.target.value(index);
+    const formData = new FormData(event.target);
+    console.log(typeof formData);
     const data = Object.fromEntries(formData);
     console.log(data);
   };
 
   return (
-    <div>
+    <FormSection>
       <Form onSubmit={onSubmitHandler}>
         <FormGroup>
-          <FormLabel htmlFor="SpotName">Spot Name:</FormLabel>
-          <input
+          <FormInputLabel htmlFor="SpotName">Spot Name:</FormInputLabel>
+          <FormInput
             type="text"
             name="Spotname"
             value={formData.Spotname}
@@ -63,60 +39,37 @@ export default function SpotForm() {
           />
         </FormGroup>
         <FormGroup>
-          <FormLabel htmlFor="Address">Address:</FormLabel>
-          <input
+          <FormInputLabel htmlFor="Address">Address:</FormInputLabel>
+          <FormInput
             type="text"
             name="Address"
             value={formData.Address}
             onChange={(event) => handleChange(event)}
           />
         </FormGroup>
-        {formData.Tasks.map((index) => (
-          <FormSelect key={index}>
-            <FormLabel htmlFor={`Tasks${index}]`}>Tasks {index}:</FormLabel>
-            <input
-              type="text"
-              name={`Tasks[${index}]`}
-              value={formData.Tasks[index]}
-              onChange={(event) => handleChange(event, index)}
-            />
-            <Button type="button" onClick={() => onDeleteTaskHandler(index)}>
-              Delete
-            </Button>
-          </FormSelect>
+        <FormInputLabel htmlFor="Tasks">Tasks:</FormInputLabel>
+        {formTaskOptions?.map((tasks, index) => (
+          <FormInput
+            key={index}
+            type="checkbox"
+            name="Tasks"
+            value={tasks}
+            checked={formData.Tasks.includes(task)}
+            onChange={handleChange}
+          />
         ))}
-        {formData.Equipment.map((index) => (
-          <FormSelect key={index}>
-            <FormLabel htmlFor={`Equipment${index}]`}>
-              Equipment {index + 1}:
-            </FormLabel>
-            <input
-              type="text"
-              name={`Equipment[${index}]`}
-              value={formData.Equipment[index]}
-              onChange={(event) => handleChange(event, index)}
-            />
-            <Button type="button" onClick={() => onDeleteEquipmentHandler()}>
-              Delete
-            </Button>
-          </FormSelect>
-        ))}
-        <FormGroup>
-          <Button type="button" onClick={onAddTaskHandler}>
-            + Task
-          </Button>
-          <Button type="button" onClick={onAddEquipmentHandler}>
-            + Equipment
-          </Button>
-        </FormGroup>
-        <FormGroup>
-          <Button type="submit">Submit</Button>{" "}
-        </FormGroup>
+        <Button type="submit">Submit</Button>{" "}
       </Form>
-    </div>
+    </FormSection>
   );
 }
-
+const FormSection = styled.section`
+  padding: 20px;
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 20px;
+`;
 const Form = styled.form`
   padding: 10px;
   margin: 10px;
@@ -125,20 +78,20 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
 `;
-const FormLabel = styled.div`
+const FormInputLabel = styled.div`
   margin-bottom: 0.5rem;
   display: inline-block;
   font-weight: bold;
+`;
+const FormInput = styled.input`
+  border-radius: 1px;
+  border: 0.5px solid;
 `;
 
 const FormGroup = styled.div`
   margin-bottom: 1rem;
 `;
-const FormSelect = styled.div`
-  margin-bottom: 1rem;
-  display: flex;
-  flex-direction: row;
-`;
+
 const Button = styled.button`
   color: #fff;
   background-color: #0d6efd;
