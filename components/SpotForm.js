@@ -97,6 +97,8 @@ export default function SpotForm() {
               {option}
             </FormLabel>
           ))}
+          <FormInput type="text" placeholder="add some equipment" />
+          <Button type="button">Add</Button>
         </FormGroup>
         <Button type="submit">Submit</Button>{" "}
       </Form>
