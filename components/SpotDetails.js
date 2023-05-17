@@ -12,10 +12,10 @@ export default function SpotDetails({
       <Name>{name}</Name>
       <Address>{address}</Address>
       <Tasks>
-        <Title>Übungen:</Title>
+        <Title>Tasks:</Title>
       </Tasks>
       <Equipment>
-        <Title>Trainingsgeräte:</Title>
+        <Title>Equipment:</Title>
       </Equipment>
     </Details>
   );
