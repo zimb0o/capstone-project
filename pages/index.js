@@ -1,8 +1,9 @@
-import SpotCard from "../components/SpotCard.js";
+import SpotForm from "../components/SpotForm.js";
+import { useRouter } from "next/router";
 export default function Home() {
   return (
     <div>
-      <SpotCard />
+      <SpotForm />
     </div>
   );
 }
