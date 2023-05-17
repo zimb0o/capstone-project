@@ -10,7 +10,8 @@ export default function SpotForm() {
     Tasks: [],
     Equipment: [],
   });
-  const router = useRouter();
+
+  // const router = useRouter();
   const handleOptionToggle = (option, field) => {
     setFormData((prevFormData) => {
       const selectedOptions = prevFormData[field];
@@ -43,10 +44,10 @@ export default function SpotForm() {
   const onSubmitHandler = (event) => {
     event.preventDefault();
     console.log(formData);
-    router.push({
+    /*router.push({
       pathname: "/spots",
       query: { formData: JSON.stringify(formData) },
-    });
+    });*/
   };
   return (
     <FormSection>
@@ -81,6 +82,8 @@ export default function SpotForm() {
               {option}
             </FormLabel>
           ))}
+          <FormInput type="text" placeholder="add your own task" />
+          <Button type="button">Add</Button>
         </FormGroup>
         <FormGroup>
           <FormInputLabel htmlFor="Equipment">Equipment:</FormInputLabel>
@@ -127,6 +130,7 @@ const FormInputLabel = styled.label`
 const FormInput = styled.input`
   border-radius: 1px;
   border: 0.5px solid;
+  position: center;
 `;
 
 const FormGroup = styled.div`
