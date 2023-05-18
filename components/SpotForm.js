@@ -3,7 +3,8 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import { formTaskOptions } from "../helpers/formTaskOptions";
 import { formEquipmentOptions } from "../helpers/formEquipmentOptions";
-export default function SpotForm() {
+
+export default function SpotForm({ addSpotHandler }) {
   const [formData, setFormData] = useState({
     Spotname: "",
     Address: "",
@@ -43,12 +44,19 @@ export default function SpotForm() {
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    console.log(formData);
-    /*router.push({
-      pathname: "/spots",
-      query: { formData: JSON.stringify(formData) },
-    });*/
+    console.log("");
+    addSpotHandler(formData);
+
+    setFormData({
+      Spotname: "",
+      Address: "",
+      Tasks: [],
+      Equipment: [],
+    });
   };
+  /*router.push("/spots")}
+    
+    event.target.reset();*/
   return (
     <FormSection>
       <Form onSubmit={onSubmitHandler}>
@@ -82,8 +90,6 @@ export default function SpotForm() {
               {option}
             </FormLabel>
           ))}
-          <FormInput type="text" placeholder="add your own task" />
-          <Button type="button">Add</Button>
         </FormGroup>
         <FormGroup>
           <FormInputLabel htmlFor="Equipment">Equipment:</FormInputLabel>
@@ -97,8 +103,6 @@ export default function SpotForm() {
               {option}
             </FormLabel>
           ))}
-          <FormInput type="text" placeholder="add some equipment" />
-          <Button type="button">Add</Button>
         </FormGroup>
         <Button type="submit">Submit</Button>{" "}
       </Form>
@@ -153,8 +157,4 @@ const FormLabel = styled.label`
   display: flex;
   align-items: center;
   margin-bottom: 0.5rem;
-`;
-
-const TaskOptions = styled.div`
-  border: 1px solid;
 `;

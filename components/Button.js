@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export function Button({ type, variant, onClick, children }) {
+export default function Button({ type, variant, onClick, children }) {
   return (
     <DefaultButton type={type} variant={variant} onClick={onClick}>
       {children}
