@@ -14,5 +14,5 @@ export default function CreateSpot({ setSpots }) {
     setSpots(updatedSpots);
   }
 
-  return <SpotForm addSpot={addSpotHandler} />;
+  return <SpotForm />;
 }

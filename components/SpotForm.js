@@ -45,7 +45,6 @@ export default function SpotForm({ addSpotHandler }) {
   const onSubmitHandler = (event) => {
     event.preventDefault();
     console.log("");
-    addSpotHandler(formData);
 
     setFormData({
       Spotname: "",
