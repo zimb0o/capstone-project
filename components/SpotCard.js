@@ -3,8 +3,7 @@ import styled from "styled-components";
 import SpotDetails from "../components/SpotDetails.js";
 import Heart from "../components/Icons/Heart.js";
 import HeartActive from "../components/Icons/HeartActive.js";
-
-export default function SpotCard({ spot, toggleBookmark }) {
+export default function SpotCard({ spot, toggleBookmark, deleteSpot }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleExpandClick = () => {
@@ -20,23 +19,30 @@ export default function SpotCard({ spot, toggleBookmark }) {
           toggleBookmark(spot?.id);
         }}
       >
-        {spot?.isBookmark ? <Heart></Heart> : <HeartActive></HeartActive>}
+        {spot?.isBookmark ? <Heart /> : <HeartActive />}
       </BookmarkButton>
       <TextContainer>
-        <Name>{spot?.name}</Name>
-        <Address>{spot?.address}</Address>
+        <Name>{spot?.Spotname}</Name>
+        <Address>{spot?.Address}</Address>
       </TextContainer>
-
       <ImageContainer>
         <Image
           src="https://cdn.pullup-dip.com/media/image/f6/2a/00/back-lever-skill.jpg"
           alt="Spot Image"
         />
       </ImageContainer>
+
       <Button onClick={handleExpandClick}>
-        {isExpanded ? "close" : "more Details"}
+        {isExpanded ? "Close" : "More Details"}
       </Button>
-      {isExpanded && <SpotDetails />}
+      {isExpanded && (
+        <SpotDetails
+          name={spot?.Spotname}
+          address={spot?.Address}
+          tasks={spot?.Tasks}
+          equipment={spot?.Equipment}
+        />
+      )}
     </Card>
   );
 }

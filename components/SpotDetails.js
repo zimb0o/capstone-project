@@ -1,21 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function SpotDetails({
-  name,
-  address,
-  tasks = [],
-  equipment = [],
-}) {
+export default function SpotDetails({ tasks = [], equipment = [] }) {
   return (
     <Details>
-      <Name>{name}</Name>
-      <Address>{address}</Address>
       <Tasks>
         <Title>Tasks:</Title>
+        <ul>
+          {tasks.map((task, index) => (
+            <li key={index}>{task}</li>
+          ))}
+        </ul>
       </Tasks>
       <Equipment>
         <Title>Equipment:</Title>
+        <ul>
+          {equipment.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
       </Equipment>
     </Details>
   );

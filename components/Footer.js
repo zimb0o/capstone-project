@@ -12,7 +12,7 @@ export default function Footer() {
 
   return (
     <StyledNavigation>
-      <NavLink href={`/Spots`}>
+      <NavLink href={`/spots`}>
         <StyledNavItem>
           {pathname === "/spots" ? <SpotActiveIcon /> : <SpotIcon />}
           <NavIconText>Spots</NavIconText>

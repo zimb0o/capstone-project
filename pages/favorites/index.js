@@ -1,19 +1,14 @@
-import styled from "styled-components";
 import SpotCard from "../../components/SpotCard.js";
+import Layout from "../../components/Layout";
 
 export default function FavoriteSpots({ spots, toggleBookmark }) {
   return (
-    <StyledBookmarkSection>
+    <Layout>
       {spots
         .filter((spot) => spot.isBookmark)
         .map((spot) => (
           <SpotCard spot={spot} key={spot.id} toggleBookmark={toggleBookmark} />
         ))}
-    </StyledBookmarkSection>
+    </Layout>
   );
 }
-
-const StyledBookmarkSection = styled.section`
-  margin: 80px 0 30px 0;
-  padding: 10px;
-`;
