@@ -3,7 +3,9 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import { formTaskOptions } from "../helpers/formTaskOptions";
 import { formEquipmentOptions } from "../helpers/formEquipmentOptions";
-export default function SpotForm({ addSpot }) {
+import { v4 as uuidv4 } from "uuid";
+
+export default function SpotForm({ addSpots }) {
   const [formData, setFormData] = useState({
     id: Date.now(),
     Spotname: "",
@@ -13,6 +15,7 @@ export default function SpotForm({ addSpot }) {
   });
 
   const router = useRouter();
+
   const handleOptionToggle = (option, field) => {
     setFormData((prevFormData) => {
       const selectedOptions = prevFormData[field];
@@ -46,15 +49,15 @@ export default function SpotForm({ addSpot }) {
     event.preventDefault();
     const newSpot = {
       id: formData.id,
-      Spotname: formData.Spotname, // Updated property name
-      Address: formData.Address, // Updated property name
-      Tasks: formData.Tasks, // Updated property name
+      Spotname: formData.Spotname,
+      Address: formData.Address,
+      Tasks: formData.Tasks,
       Equipment: formData.Equipment,
     };
     const existingSpots = JSON.parse(localStorage.getItem("spots")) || [];
     const updatedSpots = [...existingSpots, newSpot];
     localStorage.setItem("spots", JSON.stringify(updatedSpots));
-    addSpot(newSpot);
+    addSpots(newSpot);
     setFormData({
       id: Date.now(),
       Spotname: "",
@@ -87,33 +90,33 @@ export default function SpotForm({ addSpot }) {
             onChange={handleChange}
           />
         </FormGroup>
-        <FormGroup>
+        <FormGroup key={uuidv4()}>
           <FormInputLabel htmlFor="Tasks">Tasks:</FormInputLabel>
-          {formTaskOptions.map((option) => (
-            <FormLabel key={option}>
+          {formTaskOptions.map((task) => (
+            <FormLabel key={task.id}>
               <FormInput
                 type="checkbox"
-                checked={formData.Tasks.includes(option)}
-                onChange={() => handleOptionToggle(option, "Tasks")}
+                checked={formData.Tasks.includes(task)}
+                onChange={() => handleOptionToggle(task, "Tasks")}
               />
-              {option}
+              {task}
             </FormLabel>
           ))}
         </FormGroup>
-        <FormGroup>
+        <FormGroup key={uuidv4()}>
           <FormInputLabel htmlFor="Equipment">Equipment:</FormInputLabel>
-          {formEquipmentOptions?.map((option) => (
-            <FormLabel key={option}>
+          {formEquipmentOptions?.map((equipment) => (
+            <FormLabel key={equipment.id}>
               <FormInput
                 type="checkbox"
-                checked={formData.Equipment.includes(option)}
-                onChange={() => handleOptionToggle(option, "Equipment")}
+                checked={formData.Equipment.includes(equipment)}
+                onChange={() => handleOptionToggle(equipment, "Equipment")}
               />
-              {option}
+              {equipment}
             </FormLabel>
           ))}
         </FormGroup>
-        <Button type="submit">Submit</Button>{" "}
+        <Button type="submit">Submit</Button>
       </Form>
     </FormSection>
   );

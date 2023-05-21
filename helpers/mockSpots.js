@@ -1,7 +1,7 @@
 export const mockSpots = [
   {
     id: 1,
-    Spotname: "Trimm-Dich-Pfad",
+    Name: "Trimm-Dich-Pfad",
     Address: "Am Planetarium",
     Tasks: [
       "Leg raises",
@@ -15,7 +15,7 @@ export const mockSpots = [
   },
   {
     id: 2,
-    Spotname: "Wehbers Park",
+    Name: "Wehbers Park",
     Address: "Emilienstr. 71, 20259 Hamburg",
     Tasks: ["Push-ups", "Dips", "L-sit hold", "Human flag"],
     Equipment: ["Pull-up bar", "Parallel bars", "Monkey bars"],
@@ -24,7 +24,7 @@ export const mockSpots = [
   },
   {
     id: 3,
-    Spotname: "Altonaer Volkspark",
+    Name: "Altonaer Volkspark",
     Address: "Bahrenfeld, 22607 Hamburg",
     Tasks: ["Pull-ups", "Muscle-ups", "Handstand push-ups", "Front lever"],
     Equipment: ["Pull-up bar", "Parallel bars", "Rings"],
@@ -33,7 +33,7 @@ export const mockSpots = [
   },
   {
     id: 4,
-    Spotname: "Park Reeseberg",
+    Name: "Park Reeseberg",
     Address: "Reeseberg 28, 21079 Hamburg",
     Tasks: ["Squats", "Lunges", "Box jumps", "Plyometric push-ups"],
     Equipment: ["Benches", "Steps"],

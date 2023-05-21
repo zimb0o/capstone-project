@@ -8,7 +8,7 @@ export default function SpotDetails({ tasks = [], equipment = [] }) {
         <Title>Tasks:</Title>
         <ul>
           {tasks.map((task, index) => (
-            <li key={index}>{task}</li>
+            <li key={task.id}>{task}</li>
           ))}
         </ul>
       </Tasks>
@@ -16,7 +16,7 @@ export default function SpotDetails({ tasks = [], equipment = [] }) {
         <Title>Equipment:</Title>
         <ul>
           {equipment.map((item, index) => (
-            <li key={index}>{item}</li>
+            <li key={equipment.id}>{item}</li>
           ))}
         </ul>
       </Equipment>

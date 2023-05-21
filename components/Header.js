@@ -13,7 +13,7 @@ export default function Header() {
         return "Favorites";
     }
   }
-  let title = setTitle();
+  const title = setTitle();
   return (
     <StyledHeader>
       <Headline>{title}</Headline>
@@ -34,7 +34,7 @@ const StyledHeader = styled.header`
 `;
 
 const Headline = styled.h2`
-  font-size: 18px;
+  font-size: 1rem;
   font-weight: bold;
   color: #666;
   margin-bottom: 20px;
