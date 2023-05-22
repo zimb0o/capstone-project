@@ -3,7 +3,7 @@ import Layout from "../../components/Layout";
 
 export default function FavoriteSpots({ spots, toggleBookmark }) {
   return (
-    <Layout>
+    <Layout pageTitle="Favorites">
       {spots
         .filter((spot) => spot.isBookmark)
         .map((spot) => (

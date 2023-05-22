@@ -22,8 +22,8 @@ export default function SpotCard({ spot, toggleBookmark, deleteSpot }) {
         {spot?.isBookmark ? <Heart /> : <HeartActive />}
       </BookmarkButton>
       <TextContainer>
-        <Name>{spot?.Name}</Name>
-        <Address>{spot?.Address}</Address>
+        <Name>{spot?.name}</Name>
+        <Address>{spot?.address}</Address>
       </TextContainer>
       <ImageContainer>
         <Image
@@ -38,9 +38,9 @@ export default function SpotCard({ spot, toggleBookmark, deleteSpot }) {
       {isExpanded && (
         <SpotDetails
           name={spot?.Name}
-          address={spot?.Address}
-          tasks={spot?.Tasks}
-          equipment={spot?.Equipment}
+          address={spot?.address}
+          tasks={spot?.tasks}
+          equipment={spot?.equipment}
         />
       )}
     </Card>

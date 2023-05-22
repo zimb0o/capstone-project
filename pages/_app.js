@@ -3,9 +3,9 @@ import GlobalStyle from "../styles";
 import { mockSpots } from "../helpers/mockSpots.js";
 import useLocalStorage from "@/helpers/localStorage";
 export default function App({ Component, pageProps }) {
-  const [spots, addSpots] = useLocalStorage("spots", mockSpots);
+  const [spots, addSpot] = useLocalStorage("spots", mockSpots);
   const addSpotHandler = (newSpot) => {
-    addSpots((prevSpots) => [newSpot, ...prevSpots]);
+    addSpot((prevSpots) => [newSpot, ...prevSpots]);
   };
   function toggleBookmark(id) {
     const newSpotArray = spots?.map((spot) => {
@@ -18,7 +18,7 @@ export default function App({ Component, pageProps }) {
         return spot;
       }
     });
-    addSpots(newSpotArray);
+    addSpot(newSpotArray);
   }
 
   return (

@@ -1,22 +1,9 @@
 import styled from "styled-components";
 import { useRouter } from "next/router";
-export default function Header() {
-  const { pathname } = useRouter();
-
-  function setTitle() {
-    switch (pathname) {
-      case "/spots":
-        return "Spots";
-      case "/create":
-        return "add your Spot";
-      case "/favorites":
-        return "Favorites";
-    }
-  }
-  const title = setTitle();
+export default function Header({ pageTitle }) {
   return (
     <StyledHeader>
-      <Headline>{title}</Headline>
+      <Headline>{pageTitle}</Headline>
     </StyledHeader>
   );
 }

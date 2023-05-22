@@ -1,15 +1,8 @@
 import SpotForm from "../../components/SpotForm.js";
 import Layout from "../../components/Layout.js";
-export default function CreateSpot({ addSpots }) {
-  function addSpotHandler(formData) {
-    const { id, Spotname, Address, Tasks, Equipment } = formData;
-    const newSpot = { id, Spotname, Address, Tasks, Equipment };
-
-    addSpots(newSpot);
-  }
-
+export default function CreateSpot({ addSpotHandler }) {
   return (
-    <Layout>
+    <Layout pageTitle="create a new Spot">
       <SpotForm addSpot={addSpotHandler} />
     </Layout>
   );

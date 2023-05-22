@@ -5,10 +5,10 @@ import { formTaskOptions } from "../helpers/formTaskOptions";
 import { formEquipmentOptions } from "../helpers/formEquipmentOptions";
 import { v4 as uuidv4 } from "uuid";
 
-export default function SpotForm({ addSpots }) {
+export default function SpotForm({ addSpot }) {
   const [formData, setFormData] = useState({
     id: Date.now(),
-    Spotname: "",
+    Name: "",
     Address: "",
     Tasks: [],
     Equipment: [],
@@ -20,7 +20,7 @@ export default function SpotForm({ addSpots }) {
     setFormData((prevFormData) => {
       const selectedOptions = prevFormData[field];
 
-      if (selectedOptions.includes(option)) {
+      if (selectedOptions?.includes(option)) {
         return {
           ...prevFormData,
           [field]: selectedOptions.filter(
@@ -48,19 +48,17 @@ export default function SpotForm({ addSpots }) {
   const onSubmitHandler = (event) => {
     event.preventDefault();
     const newSpot = {
-      id: formData.id,
-      Spotname: formData.Spotname,
-      Address: formData.Address,
-      Tasks: formData.Tasks,
-      Equipment: formData.Equipment,
+      id: uuidv4(),
+      name: formData.Name,
+      address: formData.Address,
+      tasks: formData.Tasks,
+      equipment: formData.Equipment,
     };
-    const existingSpots = JSON.parse(localStorage.getItem("spots")) || [];
-    const updatedSpots = [...existingSpots, newSpot];
-    localStorage.setItem("spots", JSON.stringify(updatedSpots));
-    addSpots(newSpot);
+
+    addSpot(newSpot);
     setFormData({
       id: Date.now(),
-      Spotname: "",
+      Name: "",
       Address: "",
       Tasks: [],
       Equipment: [],
@@ -73,11 +71,11 @@ export default function SpotForm({ addSpots }) {
     <FormSection>
       <Form onSubmit={onSubmitHandler}>
         <FormGroup>
-          <FormInputLabel htmlFor="SpotName">Spot Name:</FormInputLabel>
+          <FormInputLabel htmlFor="Name">Spot Name:</FormInputLabel>
           <FormInput
             type="text"
-            name="Spotname"
-            value={formData.Spotname}
+            name="Name"
+            value={formData.Name}
             onChange={handleChange}
           />
         </FormGroup>
@@ -93,7 +91,7 @@ export default function SpotForm({ addSpots }) {
         <fieldset key={uuidv4()}>
           <legend>Tasks:</legend>
           {formTaskOptions.map((task) => (
-            <FormLabel key={task.id}>
+            <FormLabel key={task}>
               <FormInput
                 type="checkbox"
                 checked={formData.Tasks.includes(task)}
@@ -106,7 +104,7 @@ export default function SpotForm({ addSpots }) {
         <fieldset key={uuidv4()}>
           <legend>Equipment:</legend>
           {formEquipmentOptions?.map((equipment) => (
-            <FormLabel key={equipment.id}>
+            <FormLabel key={equipment}>
               <FormInput
                 type="checkbox"
                 checked={formData.Equipment.includes(equipment)}
@@ -152,7 +150,7 @@ const FormInput = styled.input`
 `;
 
 const FormGroup = styled.div`
-  margin-bottom: 1 rem;
+  margin-bottom: 1rem;
   border: 0.5px solid;
   border-radius: 0.5px;
 `;
