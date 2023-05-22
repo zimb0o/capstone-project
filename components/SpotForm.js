@@ -90,8 +90,8 @@ export default function SpotForm({ addSpots }) {
             onChange={handleChange}
           />
         </FormGroup>
-        <FormGroup key={uuidv4()}>
-          <FormInputLabel htmlFor="Tasks">Tasks:</FormInputLabel>
+        <fieldset key={uuidv4()}>
+          <legend>Tasks:</legend>
           {formTaskOptions.map((task) => (
             <FormLabel key={task.id}>
               <FormInput
@@ -102,9 +102,9 @@ export default function SpotForm({ addSpots }) {
               {task}
             </FormLabel>
           ))}
-        </FormGroup>
-        <FormGroup key={uuidv4()}>
-          <FormInputLabel htmlFor="Equipment">Equipment:</FormInputLabel>
+        </fieldset>
+        <fieldset key={uuidv4()}>
+          <legend>Equipment:</legend>
           {formEquipmentOptions?.map((equipment) => (
             <FormLabel key={equipment.id}>
               <FormInput
@@ -115,7 +115,7 @@ export default function SpotForm({ addSpots }) {
               {equipment}
             </FormLabel>
           ))}
-        </FormGroup>
+        </fieldset>
         <Button type="submit">Submit</Button>
       </Form>
     </FormSection>

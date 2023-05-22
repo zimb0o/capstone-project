@@ -28,7 +28,7 @@ export default function App({ Component, pageProps }) {
       <Component
         {...pageProps}
         spots={spots}
-        addSpots={addSpotHandler}
+        addSpotHandler={addSpotHandler}
         toggleBookmark={toggleBookmark}
       />
     </>
