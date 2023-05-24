@@ -7,6 +7,7 @@ import CreateIcon from "../components/Icons/Create.js";
 import CreateActiveIcon from "../components/Icons/CreateActive.js";
 import FavouriteIcon from "../components/Icons/Favourite.js";
 import FavouriteActiveIcon from "../components/Icons/FavouriteActive.js";
+import WeatherIcon from "../components/Icons/Weather.js";
 export default function Footer() {
   const { pathname } = useRouter();
 
@@ -34,6 +35,12 @@ export default function Footer() {
             <FavouriteIcon />
           )}
           <NavIconText>Favorites</NavIconText>
+        </StyledNavItem>
+      </NavLink>
+      <NavLink href={`/weather`}>
+        <StyledNavItem>
+          {pathname === "/weather" ? <WeatherIcon /> : <WeatherIcon />}
+          <NavIconText>Weather</NavIconText>
         </StyledNavItem>
       </NavLink>
     </StyledNavigation>
