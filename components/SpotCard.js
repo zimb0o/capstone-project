@@ -37,7 +37,7 @@ export default function SpotCard({ spot, toggleBookmark, deleteSpot }) {
       </Button>
       {isExpanded && (
         <SpotDetails
-          name={spot?.Name}
+          name={spot?.name}
           address={spot?.address}
           tasks={spot?.tasks}
           equipment={spot?.equipment}

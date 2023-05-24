@@ -8,10 +8,10 @@ import { v4 as uuidv4 } from "uuid";
 export default function SpotForm({ addSpot }) {
   const [formData, setFormData] = useState({
     id: Date.now(),
-    Name: "",
-    Address: "",
-    Tasks: [],
-    Equipment: [],
+    name: "",
+    address: "",
+    tasks: [],
+    equipment: [],
   });
 
   const router = useRouter();
@@ -49,19 +49,19 @@ export default function SpotForm({ addSpot }) {
     event.preventDefault();
     const newSpot = {
       id: uuidv4(),
-      name: formData.Name,
-      address: formData.Address,
-      tasks: formData.Tasks,
-      equipment: formData.Equipment,
+      name: formData.name,
+      address: formData.address,
+      tasks: formData.tasks,
+      equipment: formData.equipment,
     };
 
     addSpot(newSpot);
     setFormData({
       id: Date.now(),
-      Name: "",
-      Address: "",
-      Tasks: [],
-      Equipment: [],
+      name: "",
+      address: "",
+      tasks: [],
+      equipment: [],
     });
     console.log(formData);
     router.push("/spots");
@@ -75,7 +75,7 @@ export default function SpotForm({ addSpot }) {
           <FormInput
             type="text"
             name="Name"
-            value={formData.Name}
+            value={formData.name}
             onChange={handleChange}
           />
         </FormGroup>
@@ -84,7 +84,7 @@ export default function SpotForm({ addSpot }) {
           <FormInput
             type="text"
             name="Address"
-            value={formData.Address}
+            value={formData.address}
             onChange={handleChange}
           />
         </FormGroup>
@@ -94,7 +94,7 @@ export default function SpotForm({ addSpot }) {
             <FormLabel key={task}>
               <FormInput
                 type="checkbox"
-                checked={formData.Tasks.includes(task)}
+                checked={formData.tasks.includes(task)}
                 onChange={() => handleOptionToggle(task, "Tasks")}
               />
               {task}
@@ -107,7 +107,7 @@ export default function SpotForm({ addSpot }) {
             <FormLabel key={equipment}>
               <FormInput
                 type="checkbox"
-                checked={formData.Equipment.includes(equipment)}
+                checked={formData.equipment.includes(equipment)}
                 onChange={() => handleOptionToggle(equipment, "Equipment")}
               />
               {equipment}
